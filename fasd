@@ -39,7 +39,11 @@ fasd() {
         env)
           { # source rc files if present
           [ -s "/etc/fasdrc" ] && . "/etc/fasdrc"
-          [ -s "$HOME/.fasdrc" ] && . "$HOME/.fasdrc"
+          if [ -s "${XDG_CONFIG_HOME:-$HOME/.config}/fasdrc" ]; then
+            . "${XDG_CONFIG_HOME:-$HOME/.config}/fasdrc"
+          elif [ -s "$HOME/.fasdrc" ]; then
+            . "$HOME/.fasdrc"
+          fi
 
           # set default options
           [ -z "$_FASD_DATA" ] && _FASD_DATA="$HOME/.fasd"

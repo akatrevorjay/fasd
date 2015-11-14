@@ -192,8 +192,11 @@ You can define your own backend by declaring a function by that name in your
 
 # TWEAKS
 
-Upon every execution, fasd will source "/etc/fasdrc" and "$HOME/.fasdrc" if
-they are present. Below are some variables you can set:
+Upon every execution, fasd will source "/etc/fasdrc", and
+"$XDG_CONFIG_HOME/fasdrc" (defaults to $HOME/.config/fasdrc) or "$HOME/.fasdrc"
+if they are present.
+
+The following variables can be set there:
 
     $_FASD_DATA
     Path to the fasd data file, default "$HOME/.fasd".

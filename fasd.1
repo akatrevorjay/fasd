@@ -232,9 +232,11 @@ You can set default backend with \f[C]_FASD_BACKENDS\f[] variable in our
 \f[C]\&.fasdrc\f[].
 .SH TWEAKS
 .PP
-Upon every execution, fasd will source "/etc/fasdrc" and "$HOME/.fasdrc"
-if they are present.
-Below are some variables you can set:
+Upon every execution, fasd will source "/etc/fasdrc", and
+"$XDG_CONFIG_HOME/fasdrc" (defaults to
+$HOME/.config/fasdrc) or "$HOME/.fasdrc" if they are present.
+.PP
+The following variables can be set there:
 .IP
 .nf
 \f[C]
