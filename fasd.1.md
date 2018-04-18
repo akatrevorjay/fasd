@@ -1,5 +1,5 @@
 % FASD(1) fasd user manual
-% Wei Dai <x@wei23.net>
+% Wei Dai <x@wei23.net> and contributors
 % Jul 16, 2012
 
 # NAME
@@ -187,19 +187,25 @@ backends.
   for editing things in vim
 
 You can define your own backend by declaring a function by that name in your
-`.fasdrc`. You can set default backend with `_FASD_BACKENDS` variable in our
-`.fasdrc`.
+[configuration file](#configuration). You can set default backend with `_FASD_BACKENDS` variable.
 
-# TWEAKS
 
-Upon every execution, fasd will source "/etc/fasdrc", and
-"$XDG_CONFIG_HOME/fasdrc" (defaults to $HOME/.config/fasdrc) or "$HOME/.fasdrc"
-if they are present.
+# CONFIGURATION
 
-The following variables can be set there:
+Upon every execution, fasd will look for a configuration file in the following
+order:
+
+1. `$XDG_CONFIG_HOME/fasd/config`
+2. `$XDG_CONFIG_HOME/fasdrc`
+3. `$HOME/.fasdrc`
+3. `$XDG_CONFIG_DIRS/fasd/config`
+4. `$XDG_CONFIG_DIRS/fasdrc`
+5. `/etc/fasdrc`
+
+Below are the available variables you can set:
 
     $_FASD_DATA
-    Path to the fasd data file, default "$HOME/.fasd".
+    Path to the fasd data file, default "$XDG_CACHE_HOME/fasd" or "$HOME/.cache/fasd" if $XDG_CACHE_HOME is not set.
 
     $_FASD_BLACKLIST
     List of blacklisted strings. Commands matching them will not be processed.
@@ -246,6 +252,10 @@ The following variables can be set there:
     Path to XDG recently-used.xbel file for recently-used backend, defaults to
     "$HOME/.local/share/recently-used.xbel"
 
+    $_FASD_NOCASE
+    Force case insensitivity for default matching with value 1, defaults to 0.
+
+
 # DEBUGGING
 
 Fasd is hosted on GitHub: https://github.com/clvv/fasd
@@ -254,9 +264,9 @@ If fasd does not work as expected, please file a bug report on GitHub describing
 the unexpected behavior along with your OS version, shell version, awk version,
 sed version, and a log file.
 
-You can set `_FASD_SINK` in your `.fasdrc` to obtain a log.
+You can set `_FASD_SINK` in your [configuration file](#configuration) to obtain a log.
 
-    _FASD_SINK="$HOME/.fasd.log"
+    _FASD_SINK="$HOME/fasd.log"
 
 # COPYING
 

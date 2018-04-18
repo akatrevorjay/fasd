@@ -25,7 +25,7 @@ will "expand" your command into the right side. Pretty magic, huh?
 
 ```
   v def conf       =>     vim /some/awkward/path/to/type/default.conf
-  j abc            =>     cd /hell/of/a/awkward/path/to/get/to/abcdef
+  j abc            =>     cd /hell/of/an/awkward/path/to/get/to/abcdef
   m movie          =>     mplayer /whatever/whatever/whatever/awesome_movie.mp4
   o eng paper      =>     xdg-open /you/dont/remember/where/english_paper.pdf
   vim `f rc lo`    =>     vim /etc/rc.local
@@ -62,9 +62,9 @@ for an up-to-date list.
 
 You can also manually obtain a copy of fasd.
 
-Download fasd 1.0.1 from GitHub:
-[zip](https://github.com/clvv/fasd/zipball/1.0.1),
-[tar.gz](https://github.com/clvv/fasd/tarball/1.0.1).
+Download fasd 1.0.2 from GitHub:
+[zip](https://github.com/whjvenyl/fasd/zipball/1.0.2),
+[tar.gz](https://github.com/whjvenyl/fasd/tarball/1.0.2).
 
 Fasd is a self-contained POSIX shell script that can be either sourced or
 executed. A Makefile is provided to install `fasd` and `fasd.1` to desired
@@ -360,6 +360,8 @@ $_FASD_RECENTLY_USED_XBEL
 Path to XDG recently-used.xbel file for recently-used backend, defaults to
 "$HOME/.local/share/recently-used.xbel"
 
+$_FASD_NOCASE
+Force case insensitivity for default matching with value 1, defaults to 0.
 ```
 
 # Debugging
@@ -379,4 +381,3 @@ _FASD_SINK="$HOME/.fasd.log"
 Fasd is originally written based on code from [z](https://github.com/rupa/z) by
 rupa deadwyler under the WTFPL license. Most if not all of the code has been
 rewritten. Fasd is licensed under the "MIT/X11" license.
-
